@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: tbPresenca_createTable
+      author: Duda
+      changes:
+        - createTable:
+            tableName: TB_PRESENCA
+            remarks: Tabela responsável pelo armazenamento dos bridgers
+            columns:
+              - column:
+                  name: ID
+                  type: BIGINT
+                  remarks: ID para o registro
+                  constraints:
+                    primaryKey: TRUE
+                    primaryKeyName: PK_ID_PRESENCA
+                    nullable: FALSE
+              - column:
+                  name: DATA_MARCADA
+                  type: DATE
+                  remarks: Data em que foi marcada a presença
+                  constraints:
+                    nullable: FALSE
+              - column:
+                  name: UUID_BRIDGER
+                  type: UUID
+                  remarks: Chave estrangeira do bridger que teve a presença marcada. Oriunda da TB_BRIDGER
+                  constraints:
+                    nullable: FALSE
+        - addForeignKeyConstraint:
+            baseColumnNames: UUID_BRIDGER
+            baseTableName: TB_PRESENCA
+            constraintName: FK_PRESENCA_BRIDGER
+            referencedColumnNames: UUID
+            referencedTableName: TB_BRIDGER
+        - addUniqueConstraint:
+            columnNames: DATA_MARCADA, UUID_BRIDGER
+            constraintName: UK_DATA_PRESENCA_BRIDGER
+            tableName: TB_PRESENCA
+        
