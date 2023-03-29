@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: tbBridger_createTable
+      author: Duda
+      changes:
+        - createTable:
+            tableName: TB_BRIDGER
+            remarks: Tabela responsável pelo armazenamento dos bridgers
+            columns:
+              - column:
+                  name: UUID
+                  type: UUID
+                  remarks: ID único que identifica o bridger
+                  constraints:
+                    primaryKey: TRUE
+                    primaryKeyName: PK_UUID_BRIDGER
+                    nullable: FALSE
+              - column:
+                  name: NOME_COMPLETO
+                  type: VARCHAR(255)
+                  remarks: Nome completo do bridger
+                  constraints:
+                    nullable: FALSE
+                    unique: TRUE
+              - column:
+                  name: EMAIL
+                  type: VARCHAR(255)
+                  remarks: E-mail do bridger
+                  constraints:
+                    nullable: FALSE
+                    unique: TRUE
+              #            TODO (@zDudaHang): Mudar para usar um hash ;)
+              - column:
+                  name: SENHA
+                  type: VARCHAR(255)
+                  remarks: Senha que o bridger usa para se autenticar
+                  constraints:
+                    nullable: FALSE
+                
+                
+                
+                
