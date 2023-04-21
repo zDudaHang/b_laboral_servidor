@@ -3,6 +3,10 @@ databaseChangeLog:
       id: tbPresenca_createTable
       author: Duda
       changes:
+        - createSequence:
+            type: BIGINT
+            sequenceName: SQ_ID_TB_PRESENCA
+            startValue: 1
         - createTable:
             tableName: TB_PRESENCA
             remarks: Tabela responsável pelo armazenamento dos bridgers
@@ -10,6 +14,7 @@ databaseChangeLog:
               - column:
                   name: ID
                   type: BIGINT
+                  valueSequenceNext: SQ_ID_TB_PRESENCA
                   remarks: ID para o registro
                   constraints:
                     primaryKey: TRUE
@@ -22,19 +27,19 @@ databaseChangeLog:
                   constraints:
                     nullable: FALSE
               - column:
-                  name: UUID_BRIDGER
+                  name: BRIDGER_UUID
                   type: UUID
                   remarks: Chave estrangeira do bridger que teve a presença marcada. Oriunda da TB_BRIDGER
                   constraints:
                     nullable: FALSE
         - addForeignKeyConstraint:
-            baseColumnNames: UUID_BRIDGER
+            baseColumnNames: BRIDGER_UUID
             baseTableName: TB_PRESENCA
             constraintName: FK_PRESENCA_BRIDGER
             referencedColumnNames: UUID
             referencedTableName: TB_BRIDGER
         - addUniqueConstraint:
-            columnNames: DATA_MARCADA, UUID_BRIDGER
+            columnNames: DATA_MARCADA, BRIDGER_UUID
             constraintName: UK_DATA_PRESENCA_BRIDGER
             tableName: TB_PRESENCA
         
