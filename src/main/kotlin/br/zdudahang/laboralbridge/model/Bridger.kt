@@ -13,6 +13,5 @@ data class Bridger(
     @Id @GeneratedValue(strategy = GenerationType.UUID)
     val uuid: UUID? = null,
     val nomeCompleto: String,
-    val email: String,
-    val senha: String
+    val email: String
 )

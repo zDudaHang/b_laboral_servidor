@@ -19,8 +19,7 @@ class BridgerService(
     fun create(dto: CreateBridgerDto): UUID? {
         val novoBridger = Bridger(
             nomeCompleto = dto.nomeCompleto,
-            email = dto.email,
-            senha = dto.senha
+            email = dto.email
         )
         return repository.save(novoBridger).uuid
     }

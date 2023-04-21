@@ -29,13 +29,6 @@ databaseChangeLog:
                   constraints:
                     nullable: FALSE
                     unique: TRUE
-              #            TODO (@zDudaHang): Mudar para usar um hash ;)
-              - column:
-                  name: SENHA
-                  type: VARCHAR(255)
-                  remarks: Senha que o bridger usa para se autenticar
-                  constraints:
-                    nullable: FALSE
                 
                 
                 
